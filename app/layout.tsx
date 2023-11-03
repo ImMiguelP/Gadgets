@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
+import NavBar from "../components/NavBar";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <body
         className={
-          "min-h-screen bg-background font-sans antialiased " +
-          fontSans.variable
+          "h-full bg-background font-sans antialiased " + fontSans.variable
         }
       >
+        <NavBar />
         {children}
       </body>
     </html>
