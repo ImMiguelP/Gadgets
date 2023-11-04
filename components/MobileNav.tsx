@@ -1,25 +1,7 @@
-import { Dialog, Menu, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  CalendarIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Dialog, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { Fragment, useState } from "react";
-
-const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Weather", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "List", href: "#", icon: DocumentDuplicateIcon, current: false },
-];
-const contact = [
-  { id: 1, name: "Email", href: "#", initial: "E", current: false },
-  { id: 2, name: "GitHub", href: "#", initial: "G", current: false },
-  { id: 3, name: "LinkedIn", href: "#", initial: "L", current: false },
-];
+import { navContact, navPages } from "./NavObjs";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -88,7 +70,7 @@ const MobileNav = () => {
                     <ul role="list" className="flex flex-1 flex-col gap-y-7">
                       <li>
                         <ul role="list" className="-mx-2 space-y-1">
-                          {navigation.map((item) => (
+                          {navPages.map((item) => (
                             <li key={item.name}>
                               <a
                                 href={item.href}
@@ -119,7 +101,7 @@ const MobileNav = () => {
                           Contact Me
                         </div>
                         <ul role="list" className="-mx-2 mt-2 space-y-1">
-                          {contact.map((team) => (
+                          {navContact.map((team) => (
                             <li key={team.name}>
                               <a
                                 href={team.href}
