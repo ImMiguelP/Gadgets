@@ -1,3 +1,4 @@
+"use client";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { Fragment, useState } from "react";
@@ -130,7 +131,7 @@ const MobileNav = () => {
           </div>
         </Dialog>
       </Transition.Root>
-      <div className="lg:pl-72">
+      <div>
         <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-primary bg-white px-4 shadow-sm sm:gap-x-6 sm:p-6 lg:px-8">
           <button
             type="button"

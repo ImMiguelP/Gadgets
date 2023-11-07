@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
-import NavBar from "../components/NavBar";
+import MobileNav from "../components/MobileNav";
+import DesktopNav from "../components/DesktopNav";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,8 +26,13 @@ export default function RootLayout({
           "h-full bg-background font-sans antialiased " + fontSans.variable
         }
       >
-        <NavBar />
-        {children}
+        <div className="flex">
+          <DesktopNav />
+          <main className="flex-1">
+            <MobileNav />
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

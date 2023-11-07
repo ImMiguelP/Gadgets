@@ -1,10 +1,12 @@
+import { Input } from "@/components/input";
 import React from "react";
 
 const Weather = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>Weather</div>
-    </main>
+    <div className="flex flex-col w-full min-h-screen items-center p-6">
+      namew
+      <Input className="w-full" />
+    </div>
   );
 };
 
