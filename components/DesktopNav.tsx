@@ -1,11 +1,11 @@
+"use client";
 import React from "react";
 import { navContact, navPages } from "./NavObjs";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const DesktopNav = () => {
+  const pathname = usePathname();
   return (
     <div className="hidden lg:inset-y-0 lg:z-20 lg:flex lg:w-72 lg:flex-col text-primary-foreground">
       <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-primary/10 bg-primary/90 px-6 pb-4">
@@ -15,23 +15,22 @@ const DesktopNav = () => {
             <li>
               <ul role="list" className="space-y-1">
                 {navPages.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? " bg-gradient-to-r from-gray-300/50 to-primary/60 text-primary-foreground"
-                          : " hover:bg-gradient-to-r from-gray-300/50 to-primary/60",
-                        "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                      )}
+                  <Link href={item.href} key={item.name}>
+                    <div
+                      className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold
+                    ${
+                      pathname === item.href
+                        ? " bg-gradient-to-r from-gray-300/50 to-primary/60 text-primary-foreground"
+                        : " hover:bg-gradient-to-r from-gray-300/50 to-primary/60"
+                    }`}
                     >
                       <item.icon
                         className="text-primary-foreground ml-5 h-6 w-6 shrink-0"
                         aria-hidden="true"
                       />
                       {item.name}
-                    </a>
-                  </li>
+                    </div>
+                  </Link>
                 ))}
               </ul>
             </li>
