@@ -11,10 +11,10 @@ import {
 } from "react-icons/ai";
 
 export const navPages = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Weather", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "List", href: "#", icon: DocumentDuplicateIcon, current: false },
+  { name: "Dashboard", href: "/", icon: HomeIcon },
+  { name: "Weather", href: "/weather", icon: FolderIcon },
+  { name: "Calendar", href: "/calendar", icon: CalendarIcon },
+  { name: "List", href: "/list", icon: DocumentDuplicateIcon },
 ];
 
 export const navContact = [
