@@ -19,11 +19,17 @@ export const navPages = [
 
 export const navContact = [
   { id: 1, name: "Email", href: "#", icon: AiOutlineMail, current: false },
-  { id: 2, name: "GitHub", href: "#", icon: AiOutlineGithub, current: false },
+  {
+    id: 2,
+    name: "GitHub",
+    href: "https://github.com/ImMiguelP",
+    icon: AiOutlineGithub,
+    current: false,
+  },
   {
     id: 3,
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/miguelpedreguera/",
     icon: AiOutlineLinkedin,
     current: false,
   },
