@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 const DesktopNav = () => {
   const pathname = usePathname();
   return (
-    <div className="hidden lg:inset-y-0 lg:z-20 lg:flex lg:w-72 lg:flex-col text-primary-foreground">
-      <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-primary/10 bg-primary/90 px-6 pb-4">
+    <div className="hidden lg:inset-y-0 lg:z-20 lg:flex lg:w-72 lg:flex-col text-secondary-foreground">
+      <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-card px-6 pb-4">
         <div className="flex h-16 shrink-0 items-center">Logo</div>
         <nav className="flex flex-1 flex-col">
           <ul role="list" className="flex flex-1 flex-col gap-y-7 -mx-7 ">
@@ -20,12 +20,12 @@ const DesktopNav = () => {
                       className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold
                     ${
                       pathname === item.href
-                        ? " bg-gradient-to-r from-gray-300/50 to-primary/60 text-primary-foreground"
-                        : " hover:bg-gradient-to-r from-gray-300/50 to-primary/60"
+                        ? " bg-gradient-to-r from-gray-300/50 to-card text-secondary-foreground"
+                        : " hover:bg-gradient-to-r from-gray-300/50 to-card"
                     }`}
                     >
                       <item.icon
-                        className="text-primary-foreground ml-5 h-6 w-6 shrink-0"
+                        className="text-secondary-foreground ml-5 h-6 w-6 shrink-0"
                         aria-hidden="true"
                       />
                       {item.name}
@@ -35,7 +35,7 @@ const DesktopNav = () => {
               </ul>
             </li>
             <li>
-              <div className="text-xs font-semibold leading-6 text-primary-foreground/80 ml-5">
+              <div className="text-xs font-semibold leading-6 text-secondary-foreground/50 ml-5">
                 Contact Me
               </div>
               <ul role="list" className="mt-2 space-y-1">
@@ -43,7 +43,7 @@ const DesktopNav = () => {
                   <li key={contact.name}>
                     <a
                       href={contact.href}
-                      className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:bg-gradient-to-r from-gray-300/50 to-primary/60"
+                      className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:bg-gradient-to-r from-gray-300/50 to-card"
                     >
                       <contact.icon
                         className="ml-5 h-6 w-6 shrink-0"
