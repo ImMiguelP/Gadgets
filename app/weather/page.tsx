@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Header from "./components/header";
+import Header from "./components/Header";
 import { WeatherType } from "../../types";
+import Current from "./components/Current";
+import ForecastDetails from "./components/ForecastDetails";
+import WeekForecast from "./components/WeekForecast";
 
 const Weather = () => {
   const [data, setData] = useState<WeatherType | null>(null);
@@ -25,11 +28,38 @@ const Weather = () => {
         setLocation("");
         setError("");
       } catch (err) {
-        setError("Location not found");
+        setError("Enter a Valid City");
         setData(null);
       }
     }
   };
+
+  let content;
+  if (!data && error === "") {
+    content = (
+      <div>
+        <h1>Weather Forecast</h1>
+        <h2>Enter a location to get a 7 day forecast</h2>
+      </div>
+    );
+  } else if (error !== "") {
+    content = (
+      <div>
+        <h1>City Not Found</h1>
+        <h2>{error}</h2>
+      </div>
+    );
+  } else {
+    content = (
+      <div className="w-full">
+        <Current data={data} celsius={celsius} />
+        <ForecastDetails />
+        <div>
+          <WeekForecast />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col w-full min-h-screen items-center p-6">
@@ -39,13 +69,7 @@ const Weather = () => {
         setCelsius={setCelsius}
         celsius={celsius}
       />
-      {data?.current ? (
-        celsius ? (
-          <div>{data.current.temp_c}</div>
-        ) : (
-          <div>{data.current.temp_f}</div>
-        )
-      ) : null}
+      {content}
     </div>
   );
 };
