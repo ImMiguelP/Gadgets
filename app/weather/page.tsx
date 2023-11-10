@@ -1,56 +1,51 @@
 "use client";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { TbTemperatureCelsius, TbTemperatureFahrenheit } from "react-icons/tb";
+
 import React, { useState } from "react";
+import Header from "./components/header";
+import { WeatherType } from "../../types";
 
 const Weather = () => {
+  const [data, setData] = useState<WeatherType | null>(null);
   const [celsius, setCelsius] = useState(true);
-  const [isInputVisible, setInputVisible] = useState(false);
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
+
+  const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${location}&days=7&aqi=yes&alerts=yes`;
+
+  const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      try {
+        const res = await fetch(`weather/api/forcast/${location}`);
+        if (!res.ok) {
+          throw new Error("Location not found");
+        }
+        const data = await res.json();
+        setData(data);
+        setLocation("");
+        setError("");
+      } catch (err) {
+        setError("Location not found");
+        setData(null);
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col w-full min-h-screen items-center p-6">
-      <div className="flex flex-row items-center w-full space-x-2 ">
-        <Button
-          onClick={() => {
-            setInputVisible(!isInputVisible);
-          }}
-          variant="outline"
-          size="icon"
-          className="bg-[#f3f6fb] text-primary rounded-xl hover:bg-primary/80 hover:text-primary-foreground"
-        >
-          <MagnifyingGlassIcon className="h-4 w-4" />
-        </Button>
-        <div
-          style={{
-            width: isInputVisible ? "100%" : "0",
-            overflow: "hidden",
-            transition: "width 0.3s ease-in-out",
-          }}
-        >
-          <Input className="w-full" />
-        </div>
-      </div>
-      <div className="pt-5 flex flex-row w-full items-center justify-between">
-        <h1 className="text-xl font-semibold text-start">Weather Forecast</h1>
-        <div className="flex">
-          <Button
-            onClick={() => {
-              setCelsius(!celsius);
-            }}
-            variant="outline"
-            size="icon"
-            className="bg-[#f3f6fb] text-primary  hover:bg-primary hover:text-primary-foreground"
-          >
-            {celsius ? (
-              <TbTemperatureCelsius className="h-4 w-4" />
-            ) : (
-              <TbTemperatureFahrenheit className="h-4 w-4" />
-            )}
-          </Button>
-        </div>
-      </div>
+      <Header
+        handleSearch={handleSearch}
+        setLocation={setLocation}
+        setCelsius={setCelsius}
+        celsius={celsius}
+      />
+      {data?.current ? (
+        celsius ? (
+          <div>{data.current.temp_c}</div>
+        ) : (
+          <div>{data.current.temp_f}</div>
+        )
+      ) : null}
     </div>
   );
 };
