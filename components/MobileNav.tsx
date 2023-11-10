@@ -6,10 +6,6 @@ import { navContact, navPages } from "./NavObjs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 const MobileNav = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();

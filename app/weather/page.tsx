@@ -1,7 +1,7 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ChevronRightIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { TbTemperatureCelsius, TbTemperatureFahrenheit } from "react-icons/tb";
 import React, { useState } from "react";
 
