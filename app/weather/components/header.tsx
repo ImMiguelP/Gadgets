@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { TbTemperatureCelsius, TbTemperatureFahrenheit } from "react-icons/tb";
 import React, { useState } from "react";
 

@@ -3,13 +3,11 @@ import { WeatherType } from "../../../types";
 import Image from "next/image";
 
 interface CurrentProps {
+  data: WeatherType;
   celsius: boolean;
 }
 
-const Current: React.FC<{ data: WeatherType; celsius: CurrentProps }> = ({
-  data,
-  celsius,
-}) => {
+const Current = ({ data, celsius }: CurrentProps) => {
   const weatherIcon = data.current
     ? data.current.condition.icon.replace(/^\/\//, "https://")
     : null;

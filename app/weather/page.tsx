@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import Header from "./components/Header";
+
 import { WeatherType } from "../../types";
 import Current from "./components/Current";
 import ForecastDetails from "./components/ForecastDetails";
 import WeekForecast from "./components/WeekForecast";
+import Header from "./components/Header";
 
 const Weather = () => {
   const [data, setData] = useState<WeatherType | null>(null);
@@ -49,14 +50,16 @@ const Weather = () => {
     );
   } else {
     content = (
-      <div className="border border-red-400 grid grid-rows-3 grid-flow-col w-full">
-        <div className="row-span-2 col-span-2 border border-red-400">
-          {data && <Current data={data} celsius={{ celsius }} />}
+      <div className="grid grid-rows-3 grid-flow-col w-full lg:max-h-[80vh] lg:h-[80vh]">
+        <div className="row-span-2 col-span-2 ">
+          {data && <Current data={data} celsius={celsius} />}
         </div>
         <div className="col-span-2 border border-red-400 ">
           <ForecastDetails />
         </div>
-        <div className="row-span-3 border border-red-400"></div>
+        <div className="row-span-3 ">
+          {data && <WeekForecast data={data} celsius={celsius} />}
+        </div>
       </div>
     );
   }

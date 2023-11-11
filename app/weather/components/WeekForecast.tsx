@@ -3,22 +3,20 @@ import { WeatherType } from "../../../types";
 import Image from "next/image";
 
 interface CurrentProps {
+  data: WeatherType;
   celsius: boolean;
 }
 
-const WeekForecast: React.FC<{
-  data: WeatherType;
-  celsius: CurrentProps;
-}> = ({ data, celsius }) => {
-  console.log(data.forecast?.forecastday);
+const WeekForecast = ({ data, celsius }: CurrentProps) => {
+  console.log(celsius ? "celsius" : "fahrenheit");
   return (
-    <div className="">
-      <p className="text-xs text-secondary-foreground/50">7-DAY FORECAST</p>
-      <div className="flex flex-row w-full">
-        {/* {data.forecast?.forecastday.slice(2).map((day, index) => (
+    <div className="h-full p-6 bg-card rounded-3xl">
+      <p className="text-xs  text-secondary-foreground/50">7-DAY FORECAST</p>
+      <div className="flex flex-col w-full h-full justify-around">
+        {data.forecast?.forecastday.slice(2).map((day, index) => (
           <div
             key={index}
-            className="text-center flex flex-col border border-red-500 items-center font-semibold text-xs gap-1 w-full"
+            className="text-center flex flex-row items-center font-semibold text-xs gap-1 w-full"
             role="group"
             aria-label={`Forecast for ${new Date(day.date).toLocaleString(
               "en-US",
@@ -52,7 +50,7 @@ const WeekForecast: React.FC<{
               </p>
             </div>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );
