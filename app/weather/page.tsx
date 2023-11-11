@@ -6,7 +6,6 @@ import { WeatherType } from "../../types";
 import Current from "./components/Current";
 import ForecastDetails from "./components/ForecastDetails";
 import WeekForecast from "./components/WeekForecast";
-import Header from "./components/Header";
 
 const Weather = () => {
   const [data, setData] = useState<WeatherType | null>(null);
@@ -66,13 +65,13 @@ const Weather = () => {
 
   return (
     <div className="flex flex-col w-full min-h-screen items-center p-6">
-      <Header
+      {/* <Header
         handleSearch={handleSearch}
         setLocation={setLocation}
         setCelsius={setCelsius}
         celsius={celsius}
       />
-      {content}
+      {content} */}
     </div>
   );
 };
