@@ -20,7 +20,7 @@ const Header = ({
     <>
       <div className="flex flex-row items-center w-full space-x-2">
         <Input
-          className="w-6/12 bg-card rounded-xl text-xs"
+          className="w-full bg-card rounded-xl text-xs"
           placeholder="Search for cities"
           onKeyDown={handleSearch}
           onChange={(e) => setLocation(e.target.value)}

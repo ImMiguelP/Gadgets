@@ -50,14 +50,14 @@ const Weather = () => {
     );
   } else {
     content = (
-      <div className="grid grid-rows-3 grid-flow-col w-full lg:max-h-[80vh] lg:h-[80vh]">
-        <div className="row-span-2 col-span-2 ">
+      <div className="grid grid-rows-3 grid-flow-col w-full lg:max-h-[80vh] lg:h-[80vh] pr-8">
+        <div className="row-span-2 col-span-2  ">
           {data && <Current data={data} celsius={celsius} />}
         </div>
-        <div className="col-span-2 border border-red-400 ">
+        <div className="col-span-2">
           <ForecastDetails />
         </div>
-        <div className="row-span-3 ">
+        <div className="row-span-3 pl-8 ">
           {data && <WeekForecast data={data} celsius={celsius} />}
         </div>
       </div>
