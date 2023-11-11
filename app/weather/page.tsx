@@ -13,8 +13,6 @@ const Weather = () => {
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
 
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${location}&days=7&aqi=yes&alerts=yes`;
-
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -51,12 +49,14 @@ const Weather = () => {
     );
   } else {
     content = (
-      <div className="w-full">
-        <Current data={data} celsius={celsius} />
-        <ForecastDetails />
-        <div>
-          <WeekForecast />
+      <div className="border border-red-400 grid grid-rows-3 grid-flow-col w-full">
+        <div className="row-span-2 col-span-2 border border-red-400">
+          {data && <Current data={data} celsius={{ celsius }} />}
         </div>
+        <div className="col-span-2 border border-red-400 ">
+          <ForecastDetails />
+        </div>
+        <div className="row-span-3 border border-red-400"></div>
       </div>
     );
   }

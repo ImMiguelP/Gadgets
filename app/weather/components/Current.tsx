@@ -14,9 +14,8 @@ const Current: React.FC<{ data: WeatherType; celsius: CurrentProps }> = ({
     ? data.current.condition.icon.replace(/^\/\//, "https://")
     : null;
 
-  console.log(weatherIcon);
   return (
-    <div className="flex flex-col w-full xl:w-6/12">
+    <div className="">
       <div className="flex flex-row justify-between">
         <div className="p-6">
           <h1 className="text-3xl font-semibold">{data.location.name}</h1>
