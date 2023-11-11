@@ -19,4 +19,21 @@ export type WeatherType = {
       code: number;
     };
   };
+  forecast?: {
+    forecastday: [
+      {
+        date: string;
+        day: {
+          condition: {
+            icon: string;
+            text: string;
+          };
+          maxtemp_c: number;
+          mintemp_c: number;
+          maxtemp_f: number;
+          mintemp_f: number;
+        };
+      }
+    ];
+  };
 };
