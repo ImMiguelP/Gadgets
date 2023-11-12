@@ -123,7 +123,7 @@ const MobileNav = () => {
         </Dialog>
       </Transition.Root>
       <div>
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4  bg-card px-4 shadow-sm sm:gap-x-6 sm:p-6 lg:px-8">
+        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4  bg-card lg:bg-background px-4 shadow-sm sm:gap-x-6 sm:p-6 lg:px-8">
           <button
             type="button"
             className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
