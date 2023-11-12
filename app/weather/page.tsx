@@ -7,6 +7,8 @@ import Current from "./components/Current";
 import ForecastDetails from "./components/ForecastDetails";
 import WeekForecast from "./components/WeekForecast";
 import InputSearch from "./components/InputSearch";
+import day from "../../public/images/day.jpg";
+import night from "../../public/images/night.jpg";
 
 const Weather = () => {
   const [data, setData] = useState<WeatherType | null>(null);
@@ -51,11 +53,19 @@ const Weather = () => {
   } else {
     content = (
       <div className="grid grid-rows-3 grid-flow-col w-full lg:max-h-[80vh] lg:h-[80vh] pr-8">
-        <div className="row-span-2 col-span-2  ">
+        <div
+          className="row-span-2 col-span-2 bg-day bg-cover mb-6 rounded-2xl"
+          style={{
+            backgroundImage: `url(${
+              data?.current.is_day === 0 ? night.src : day.src
+            })`,
+            backgroundSize: "cover",
+          }}
+        >
           {data && <Current data={data} celsius={celsius} />}
         </div>
         <div className="col-span-2">
-          <ForecastDetails />
+          {data && <ForecastDetails data={data} celsius={celsius} />}
         </div>
         <div className="row-span-3 pl-8 ">
           {data && <WeekForecast data={data} celsius={celsius} />}
