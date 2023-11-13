@@ -18,28 +18,29 @@ const WeekForecast = ({ data, celsius }: CurrentProps) => {
         {data.forecast?.forecastday.slice(2).map((day, index, array) => (
           <div key={index} className="flex flex-col space-y-5">
             <div
-              className="flex flex-row items-center font-semibold text-xs justify-between w-full"
+              className="flex items-center font-semibold text-xs justify-between"
               aria-label={`Forecast for ${new Date(day.date).toLocaleString(
                 "en-US",
                 { weekday: "short" }
               )}`}
             >
-              <div className="">
-                <p className="">
-                  {new Date(day.date).toLocaleString("en-US", {
-                    weekday: "short",
-                  })}
-                </p>
-              </div>
-              <div className="flex flex-row items-center">
-                <Image
-                  width={50}
-                  height={50}
-                  src={day.day.condition.icon.replace(/^\/\//, "https://")}
-                  alt={day.day.condition.text}
-                  aria-label={day.day.condition.text}
-                />
-                <p className="flex-grow">
+              <p className="">
+                {new Date(day.date).toLocaleString("en-US", {
+                  weekday: "short",
+                })}
+              </p>
+
+              <div className="flex items-center w-full ">
+                <div className="flex flex-col items-end w-full">
+                  <Image
+                    width={50}
+                    height={50}
+                    src={day.day.condition.icon.replace(/^\/\//, "https://")}
+                    alt={day.day.condition.text}
+                    aria-label={day.day.condition.text}
+                  />
+                </div>
+                <p className="w-full">
                   {day.day.condition.text.replace(/possible/gi, "")}
                 </p>
               </div>
