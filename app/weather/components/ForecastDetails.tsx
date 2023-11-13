@@ -6,6 +6,7 @@ import {
   BsCloudRainFill,
   BsFillSunFill,
   BsDroplet,
+  BsCompass,
 } from "react-icons/bs";
 interface CurrentProps {
   data: WeatherType;
@@ -27,7 +28,7 @@ const ForecastDetails = ({ data, celsius }: CurrentProps) => {
     <div className="flex flex-row text-start text-secondary-foreground/40 gap-2 text-md">
       {icon}
       <div className="flex flex-col">
-        <span className="text-md pb-2">{label}</span>
+        <span className="text-md pb-2 text-sm ">{label}</span>
         <div className="text-start text-2xl text-secondary-foreground/80">
           {value}
         </div>
@@ -40,7 +41,7 @@ const ForecastDetails = ({ data, celsius }: CurrentProps) => {
       <p className="text-xs pb-4 text-secondary-foreground/50 ">
         AIR CONDITIONS
       </p>
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid grid-cols-3 gap-6">
         <div className="flex flex-row gap-1 text-secondary-foreground/40 text-md">
           <BsThermometerHalf />
           <div className="flex flex-col">
@@ -60,7 +61,7 @@ const ForecastDetails = ({ data, celsius }: CurrentProps) => {
           value={data.current.wind_mph}
         />
         <WeatherInfo
-          icon={<BsWind />}
+          icon={<BsCompass />}
           label="Wind Direction"
           value={data.current.wind_dir}
         />
