@@ -5,6 +5,7 @@ import React, { Fragment, useState } from "react";
 import { navContact, navPages } from "./NavObjs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const MobileNav = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -132,6 +133,12 @@ const MobileNav = () => {
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
+          <div className="w-full flex justify-end">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </div>
         </div>
       </div>
     </div>
