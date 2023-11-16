@@ -9,9 +9,6 @@ import WeekForecast from "./components/WeekForecast";
 import InputSearch from "./components/InputSearch";
 import day from "../../public/images/day.jpg";
 import night from "../../public/images/night.jpg";
-
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import Hero from "./components/Hero";
 
 const Weather = () => {
