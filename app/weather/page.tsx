@@ -10,6 +10,10 @@ import InputSearch from "./components/InputSearch";
 import day from "../../public/images/day.jpg";
 import night from "../../public/images/night.jpg";
 
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Hero from "./components/Hero";
+
 const Weather = () => {
   const [data, setData] = useState<WeatherType | null>(null);
   const [celsius, setCelsius] = useState(true);
@@ -37,12 +41,7 @@ const Weather = () => {
 
   let content;
   if (!data && error === "") {
-    content = (
-      <div>
-        <h1>Weather Forecast</h1>
-        <h2>Enter a location to get a 7 day forecast</h2>
-      </div>
-    );
+    content = <Hero />;
   } else if (error !== "") {
     content = (
       <div>
