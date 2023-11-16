@@ -23,7 +23,8 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body
         className={
-          "h-full bg-background font-sans antialiased " + fontSans.variable
+          "h-full overflow-y-hidden overflow-x-hidden bg-background font-sans antialiased " +
+          fontSans.variable
         }
       >
         <div className="flex">
