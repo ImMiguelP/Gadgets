@@ -1,7 +1,7 @@
 import {
-  AdjustmentsHorizontalIcon,
   CalendarIcon,
   CloudIcon,
+  Cog6ToothIcon,
   DocumentDuplicateIcon,
   HomeIcon,
 } from "@heroicons/react/24/solid";
@@ -16,7 +16,7 @@ export const navPages = [
   { name: "Weather", href: "/weather", icon: CloudIcon },
   { name: "Calendar", href: "/calendar", icon: CalendarIcon },
   { name: "List", href: "/list", icon: DocumentDuplicateIcon },
-  { name: "Settings", href: "/settings", icon: AdjustmentsHorizontalIcon },
+  { name: "Settings", href: "/settings", icon: Cog6ToothIcon },
 ];
 
 export const navContact = [
