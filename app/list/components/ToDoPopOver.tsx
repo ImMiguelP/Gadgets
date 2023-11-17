@@ -13,7 +13,15 @@ import { Label } from "../../src/components/ui/label";
 import DatePicker from "./DatePicker";
 import PriorityPicker from "./PriorityPicker";
 
-const ToDoPopOver = () => {
+const ToDoPopOver = ({
+  text,
+  setText,
+  priority,
+  setPriority,
+  date,
+  setDate,
+  onSubmit,
+}) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -35,8 +43,11 @@ const ToDoPopOver = () => {
               <Label htmlFor="name">Task Name</Label>
               <Input
                 id="name"
+                type="text"
+                value={text}
                 placeholder="Your task"
                 className="col-span-2 h-8"
+                onChange={(e) => setText(e.target.value)}
               />
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
@@ -48,7 +59,11 @@ const ToDoPopOver = () => {
               <DatePicker />
             </div>
           </div>
-          <Button variant="default" className="w-full bg-primary/80 rounded-xl">
+          <Button
+            variant="default"
+            className="w-full bg-primary/80 rounded-xl"
+            onClick={onSubmit}
+          >
             Add Task
           </Button>
         </div>
