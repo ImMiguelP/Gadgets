@@ -1,7 +1,7 @@
 import React from "react";
 import { WeatherType } from "../../../types";
 import Image from "next/image";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "../../src/components/ui/separator";
 
 interface CurrentProps {
   data: WeatherType;
@@ -63,7 +63,7 @@ const WeekForecast = ({ data, celsius }: CurrentProps) => {
               </div>
             </div>
             {index !== array.length - 1 && (
-              <Separator className="bg-secondary-foreground/20" />
+              <Separator className="bg-primary/80" />
             )}
           </div>
         ))}

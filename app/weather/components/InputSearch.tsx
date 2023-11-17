@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../../src/components/ui/button";
+import { Input } from "../../src/components/ui/input";
 import { TbTemperatureCelsius, TbTemperatureFahrenheit } from "react-icons/tb";
-import React, { useState } from "react";
+import React from "react";
 
 interface HeaderProps {
   handleSearch: (e: React.KeyboardEvent<HTMLInputElement>) => void;

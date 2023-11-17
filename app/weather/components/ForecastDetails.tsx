@@ -68,7 +68,7 @@ const ForecastDetails = ({ data, celsius }: CurrentProps) => {
         <WeatherInfo
           icon={<BsCloudRainFill />}
           label="Chance of Rain"
-          value={chanceOfRain}
+          value={chanceOfRain + "%"}
         />
         <WeatherInfo
           icon={<BsDroplet />}
