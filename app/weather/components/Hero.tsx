@@ -13,9 +13,7 @@ const Hero = () => {
         <h1 className="text-6xl">Your City Your Weather Now!</h1>
         <h2 className="text-md text-secondary-foreground/40">{desc}</h2>
         <div className="w-full flex justify-center xl:justify-start">
-          <Button href="/weather" className="text-lg rounded-xl">
-            Get Started Now
-          </Button>
+          <Button className="text-lg rounded-xl">Get Started Now</Button>
         </div>
       </div>
       <div className="flex-grow">
