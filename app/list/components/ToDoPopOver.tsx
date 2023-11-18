@@ -73,6 +73,9 @@ const ToDoPopOver = ({
             variant="default"
             className="w-full bg-primary/80 rounded-xl"
             onClick={handleSubmit}
+            disabled={
+              text.trim().length === 0 || priority === null || date === null
+            }
           >
             Add Task
           </Button>

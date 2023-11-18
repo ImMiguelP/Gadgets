@@ -34,7 +34,7 @@ const ToDoList = () => {
   };
 
   const addTask = (task: TodoType) => {
-    if (text.length === 0) {
+    if (text.trim().length === 0 || priority === null || date === null) {
       return;
     } else {
       setTasks([task, ...tasks]);
