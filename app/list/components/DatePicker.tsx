@@ -9,8 +9,12 @@ import { CalendarIcon } from "@heroicons/react/24/solid";
 import { Calendar } from "../../src/components/ui/calendar";
 import { format } from "date-fns";
 
-const DatePicker = () => {
-  const [date, setDate] = React.useState<Date>();
+type DatePickerProps = {
+  date: Date | null;
+  setDate: React.Dispatch<React.SetStateAction<Date | null>>;
+};
+
+const DatePicker = ({ date, setDate }: DatePickerProps) => {
   return (
     <Popover>
       <PopoverTrigger>
@@ -26,8 +30,8 @@ const DatePicker = () => {
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={setDate}
+          selected={date || undefined} // undefined is required for the calendar to be uncontrolled
+          onSelect={(day: Date | undefined) => setDate(day || null)}
           initialFocus
         />
       </PopoverContent>

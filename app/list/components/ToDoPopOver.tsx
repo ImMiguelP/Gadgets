@@ -13,6 +13,16 @@ import { Label } from "../../src/components/ui/label";
 import DatePicker from "./DatePicker";
 import PriorityPicker from "./PriorityPicker";
 
+type ToDoPopOverProps = {
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
+  priority: string | null;
+  setPriority: React.Dispatch<React.SetStateAction<string | null>>;
+  date: Date | null;
+  setDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  handleSubmit: React.MouseEventHandler<HTMLButtonElement>;
+};
+
 const ToDoPopOver = ({
   text,
   setText,
@@ -20,8 +30,8 @@ const ToDoPopOver = ({
   setPriority,
   date,
   setDate,
-  onSubmit,
-}) => {
+  handleSubmit,
+}: ToDoPopOverProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -52,17 +62,17 @@ const ToDoPopOver = ({
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="status">Priority</Label>
-              <PriorityPicker />
+              <PriorityPicker priority={priority} setPriority={setPriority} />
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="date">Deadline</Label>
-              <DatePicker />
+              <DatePicker date={date} setDate={setDate} />
             </div>
           </div>
           <Button
             variant="default"
             className="w-full bg-primary/80 rounded-xl"
-            onClick={onSubmit}
+            onClick={handleSubmit}
           >
             Add Task
           </Button>

@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
-import { te } from "date-fns/locale";
+import { format } from "date-fns";
 
 type TodoType = {
   id: string;
   text: string;
   priority: string | null;
-  date: Date | null;
+  date: Date | number;
   completed: boolean;
   createdAt: Date;
 };
@@ -18,13 +18,13 @@ const ToDoList = () => {
   const [priority, setPriority] = React.useState<null | string>(null);
   const [date, setDate] = React.useState<Date | null>(null);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     addTask({
       id: "",
       text: text,
       priority: priority,
-      date: date,
+      date: date as Date,
       completed: false,
       createdAt: new Date(),
     });
@@ -55,12 +55,13 @@ const ToDoList = () => {
           setPriority={setPriority}
           date={date}
           setDate={setDate}
-          onSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </div>
       {tasks.map((task) => (
         <div className="flex flex-row items-center" key={task.id}>
           {task.text}
+          {task.priority}
         </div>
       ))}
     </div>

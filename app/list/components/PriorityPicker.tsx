@@ -5,13 +5,15 @@ import {
   PopoverTrigger,
 } from "../../src/components/ui/popover";
 import { Button } from "../../src/components/ui/button";
-import { format } from "date-fns";
 import { RxBadge } from "react-icons/rx";
 import { Badge } from "../../src/components/ui/badge";
 
-const PriorityPicker = () => {
-  const [priority, setPriority] = React.useState<null | string>(null);
+type PriorityPickerProps = {
+  priority: string | null;
+  setPriority: React.Dispatch<React.SetStateAction<string | null>>;
+};
 
+const PriorityPicker = ({ priority, setPriority }: PriorityPickerProps) => {
   const handleBadgeClick = (selectedPriority: string) => {
     setPriority(selectedPriority);
   };
