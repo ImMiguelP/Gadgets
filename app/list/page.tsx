@@ -62,6 +62,7 @@ const ToDoList = () => {
         <div className="flex flex-row items-center" key={task.id}>
           {task.text}
           {task.priority}
+          <span>{format(task.date, "PPP")} </span>
         </div>
       ))}
     </div>
