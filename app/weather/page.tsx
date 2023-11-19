@@ -23,14 +23,18 @@ const Weather = () => {
       try {
         const res = await fetch(`weather/api/forcast/${location}`);
         if (!res.ok) {
-          throw new Error("Location not found");
+          throw new Error(`${res.statusText}`);
         }
         const data = await res.json();
         setData(data);
         setLocation("");
         setError("");
       } catch (err) {
-        setError("Enter a Valid City");
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
         setData(null);
       }
     }
