@@ -4,7 +4,7 @@ export async function GET(
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  const { WEATHER_API_KEY } = process.env;
+  const WEATHER_API_KEY = "ef78e3d3433c44048e601014231911";
   try {
     const location = params.id;
     const DATA_SOURCE_URL = `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=9&aqi=yes&alerts=yes`;
