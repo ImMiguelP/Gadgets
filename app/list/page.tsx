@@ -17,6 +17,7 @@ const ToDoList = () => {
   const [text, setText] = useState<string>("");
   const [priority, setPriority] = React.useState<null | string>(null);
   const [date, setDate] = React.useState<Date | null>(null);
+  const [closePopover, setClosePopover] = React.useState<boolean>(false);
 
   const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
@@ -31,6 +32,7 @@ const ToDoList = () => {
     setText("");
     setPriority(null);
     setDate(null);
+    setClosePopover(false);
   };
 
   const addTask = (task: TodoType) => {
@@ -56,6 +58,8 @@ const ToDoList = () => {
           date={date}
           setDate={setDate}
           handleSubmit={handleSubmit}
+          closePopover={closePopover}
+          setClosePopover={setClosePopover}
         />
       </div>
       {tasks.map((task) => (

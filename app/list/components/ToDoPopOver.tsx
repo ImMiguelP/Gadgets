@@ -31,11 +31,17 @@ const ToDoPopOver = ({
   date,
   setDate,
   handleSubmit,
+  closePopover,
+  setClosePopover,
 }: ToDoPopOverProps) => {
   return (
-    <Popover>
+    <Popover open={closePopover}>
       <PopoverTrigger asChild>
-        <Button variant="link" className="text-xs text-primary/60 underline">
+        <Button
+          variant="link"
+          className="text-xs text-primary/60 underline"
+          onClick={() => setClosePopover(true)}
+        >
           Add a Task
           <PlusIcon className="h-4 w-4 ml-2 underline" />
         </Button>
