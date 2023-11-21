@@ -18,31 +18,23 @@ const PriorityPicker = ({ priority, setPriority }: PriorityPickerProps) => {
     setPriority(selectedPriority);
   };
 
-  const BadgeOption = ({
-    priority,
-    color,
-  }: {
-    priority: string;
-    color: string;
-  }) => (
-    <Badge
-      className={`${color}-600 rounded-xl hover:cursor-pointer hover:${color}-400`}
-      onClick={() => handleBadgeClick(priority)}
-    >
-      {priority}
-    </Badge>
-  );
+  const BadgeOption = ({ priority }: { priority: string }) => {
+    const priorityColors: { [key: string]: string } = {
+      High: "red",
+      Normal: "yellow",
+      Low: "green",
+    };
 
-  const getBadgeColor = () => {
-    if (priority === "High") {
-      return "bg-red-600";
-    } else if (priority === "Normal") {
-      return "bg-yellow-600";
-    } else if (priority === "Low") {
-      return "bg-green-600";
-    } else {
-      return "";
-    }
+    const color = priorityColors[priority];
+
+    return (
+      <Badge
+        className={`bg-${color}-600 rounded-xl hover:cursor-pointer hover:bg-${color}-400`}
+        onClick={() => handleBadgeClick(priority)}
+      >
+        {priority}
+      </Badge>
+    );
   };
 
   return (
@@ -51,9 +43,7 @@ const PriorityPicker = ({ priority, setPriority }: PriorityPickerProps) => {
         <Button variant="outline" className="text-xs w-[230px]">
           <RxBadge className="mr-2 h-6 w-6 text-xs" />
           {priority ? (
-            <Badge className={`${getBadgeColor()} rounded-xl`}>
-              {priority}
-            </Badge>
+            <BadgeOption priority={priority} />
           ) : (
             <span className="text-xs">Pick priority</span>
           )}
@@ -61,9 +51,9 @@ const PriorityPicker = ({ priority, setPriority }: PriorityPickerProps) => {
       </PopoverTrigger>
       <PopoverContent className="w-auto h-[80px]" align="start">
         <div className="space-x-6">
-          <BadgeOption priority="High" color="bg-red" />
-          <BadgeOption priority="Normal" color="bg-yellow" />
-          <BadgeOption priority="Low" color="bg-green" />
+          <BadgeOption priority="High" />
+          <BadgeOption priority="Normal" />
+          <BadgeOption priority="Low" />
         </div>
       </PopoverContent>
     </Popover>

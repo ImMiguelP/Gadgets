@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
-import { format } from "date-fns";
+import TaskTable from "./components/TaskTable";
+import { Badge } from "@/components/ui/badge";
 
 type TodoType = {
   id: string;
@@ -43,8 +44,6 @@ const ToDoList = () => {
     }
   };
 
-  console.log(tasks, "tasks", text, "text", priority, "priority", date, "date");
-
   return (
     <div className="flex flex-col p-6">
       <h1 className="font-bold text-xl pb-5">Your Task List</h1>
@@ -62,13 +61,7 @@ const ToDoList = () => {
           setClosePopover={setClosePopover}
         />
       </div>
-      {tasks.map((task) => (
-        <div className="flex flex-row items-center" key={task.id}>
-          {task.text}
-          {task.priority}
-          <span>{format(task.date, "PPP")} </span>
-        </div>
-      ))}
+      <TaskTable tasks={tasks} />
     </div>
   );
 };
