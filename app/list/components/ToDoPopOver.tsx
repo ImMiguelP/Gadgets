@@ -21,6 +21,8 @@ type ToDoPopOverProps = {
   date: Date | null;
   setDate: React.Dispatch<React.SetStateAction<Date | null>>;
   handleSubmit: React.MouseEventHandler<HTMLButtonElement>;
+  closePopover: boolean;
+  setClosePopover: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ToDoPopOver = ({
