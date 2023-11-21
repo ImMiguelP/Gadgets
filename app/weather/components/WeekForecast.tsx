@@ -1,7 +1,7 @@
 import React from "react";
 import { WeatherType } from "../../../types";
 import Image from "next/image";
-import { Separator } from "../../src/components/ui/separator";
+import { Separator } from "../../../src/components/ui/separator";
 
 interface CurrentProps {
   data: WeatherType;

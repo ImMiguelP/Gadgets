@@ -1,4 +1,4 @@
-import { Button } from "../../src/components/ui/button";
+import { Button } from "../../../src/components/ui/button";
 import Image from "next/image";
 import React from "react";
 import bgImg from "../../../public/images/weatherhome.png";
