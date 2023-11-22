@@ -12,18 +12,7 @@ import {
 import { Label } from "../../../src/components/ui/label";
 import DatePicker from "./DatePicker";
 import PriorityPicker from "./PriorityPicker";
-
-type ToDoPopOverProps = {
-  text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
-  priority: string | null;
-  setPriority: React.Dispatch<React.SetStateAction<string | null>>;
-  date: Date | null;
-  setDate: React.Dispatch<React.SetStateAction<Date | null>>;
-  handleSubmit: React.MouseEventHandler<HTMLButtonElement>;
-  closePopover: boolean;
-  setClosePopover: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { TaskPopover } from "../../../types";
 
 const ToDoPopOver = ({
   text,
@@ -35,7 +24,7 @@ const ToDoPopOver = ({
   handleSubmit,
   closePopover,
   setClosePopover,
-}: ToDoPopOverProps) => {
+}: TaskPopover) => {
   return (
     <Popover open={closePopover}>
       <PopoverTrigger asChild>

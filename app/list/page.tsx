@@ -2,16 +2,7 @@
 import React, { useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
 import TaskTable from "./components/TaskTable";
-import { Badge } from "@/components/ui/badge";
-
-type TodoType = {
-  id: string;
-  text: string;
-  priority: string | null;
-  date: Date | number;
-  completed: boolean;
-  createdAt: Date;
-};
+import { TodoType } from "../../types";
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState<TodoType[]>([]);
@@ -25,7 +16,7 @@ const ToDoList = () => {
     addTask({
       id: "",
       text: text,
-      priority: priority,
+      priority: priority as string,
       date: date as Date,
       completed: false,
       createdAt: new Date(),

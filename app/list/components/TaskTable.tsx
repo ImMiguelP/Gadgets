@@ -11,8 +11,13 @@ import {
 } from "@/components/ui/table";
 import { format } from "date-fns";
 import React from "react";
+import { TodoType } from "../../../types";
 
-const TaskTable = ({ tasks }) => {
+interface TaskTableProps {
+  tasks: TodoType[];
+}
+
+const TaskTable = ({ tasks }: TaskTableProps) => {
   const BadgeOption = ({ priority }: { priority: string }) => {
     const priorityColors: { [key: string]: string } = {
       High: "red",
@@ -34,7 +39,6 @@ const TaskTable = ({ tasks }) => {
           <TableHead></TableHead>
           <TableHead>Tasks</TableHead>
           <TableHead>Priority</TableHead>
-
           <TableHead className="text-right">Deadline</TableHead>
         </TableRow>
       </TableHeader>

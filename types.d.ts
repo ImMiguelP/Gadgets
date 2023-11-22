@@ -46,3 +46,24 @@ export type WeatherType = {
     ];
   };
 };
+
+export interface TodoType {
+  id: string;
+  text: string;
+  priority: string;
+  date: Date | number;
+  completed: boolean;
+  createdAt: Date;
+}
+
+export interface TaskPopover {
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
+  priority: string | null;
+  setPriority: React.Dispatch<React.SetStateAction<string | null>>;
+  date: Date | null;
+  setDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  handleSubmit: React.MouseEventHandler<HTMLButtonElement>;
+  closePopover: boolean;
+  setClosePopover: React.Dispatch<React.SetStateAction<boolean>>;
+}
