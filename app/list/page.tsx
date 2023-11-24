@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
 import TaskTable from "./components/TaskTable";
 import { TodoType } from "../../types";
+import DataTableDemo from "./components/test";
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState<TodoType[]>([]);
@@ -53,6 +54,7 @@ const ToDoList = () => {
         />
       </div>
       <TaskTable tasks={tasks} />
+      <DataTableDemo tasks={tasks} />
     </div>
   );
 };

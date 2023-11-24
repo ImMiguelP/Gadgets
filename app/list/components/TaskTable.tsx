@@ -26,8 +26,6 @@ const TaskTable = ({ tasks }: TaskTableProps) => {
     };
 
     const color = priorityColors[priority];
-    console.log("Selected Color:", color);
-
     return <Badge className={`bg-${color}-600 rounded-xl`}>{priority}</Badge>;
   };
 
