@@ -1,11 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  CaretSortIcon,
-  ChevronDownIcon,
-  DotsHorizontalIcon,
-} from "@radix-ui/react-icons";
+import { CaretSortIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -25,9 +21,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -58,7 +51,7 @@ const BadgeOption = ({ priority }: { priority: string }) => {
   return <Badge className={`bg-${color}-600 rounded-xl`}>{priority}</Badge>;
 };
 
-export const columns: ColumnDef<TaskTableProps>[] = [
+export const columns: ColumnDef<TodoType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -218,7 +211,7 @@ const DataTableDemo = ({ tasks }: TaskTableProps) => {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.isSelected && "selected"}
+                  // data-state={row.isSelected && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
