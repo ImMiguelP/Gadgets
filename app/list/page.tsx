@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
-import TaskTable from "./components/TaskTable";
 import { TodoType } from "../../types";
-import DataTableDemo from "./components/test";
+import TaskTable from "./components/TaskTable";
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState<TodoType[]>([]);
@@ -53,8 +52,7 @@ const ToDoList = () => {
           setClosePopover={setClosePopover}
         />
       </div>
-      {/* <TaskTable tasks={tasks} /> */}
-      <DataTableDemo tasks={tasks} />
+      <TaskTable tasks={tasks} />
     </div>
   );
 };
