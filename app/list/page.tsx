@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
 import { TodoType } from "../../types";
 import TaskTable from "./components/TaskTable";
@@ -10,6 +10,21 @@ const ToDoList = () => {
   const [priority, setPriority] = React.useState<null | string>(null);
   const [date, setDate] = React.useState<Date | null>(null);
   const [closePopover, setClosePopover] = React.useState<boolean>(false);
+
+  console.log(tasks);
+
+  useEffect(() => {
+    let todoItems = localStorage.getItem("MyTodos");
+
+    if (todoItems) {
+      setTasks(JSON.parse(todoItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (tasks.length === 0) return;
+    localStorage.setItem("MyTodos", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
