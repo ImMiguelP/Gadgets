@@ -118,7 +118,11 @@ export const columns: ColumnDef<TodoType>[] = [
       );
     },
     cell: ({ row }) => (
-      <div className="capitalize"> {format(row.getValue("date"), "PPP")}</div>
+      <div className="capitalize">
+        {row.getValue("date")
+          ? format(new Date(row.getValue("date")), "MMM d, yyyy")
+          : "Invalid Date"}
+      </div>
     ),
   },
 ];
