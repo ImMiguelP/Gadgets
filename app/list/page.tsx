@@ -11,8 +11,6 @@ const ToDoList = () => {
   const [date, setDate] = React.useState<Date | null>(null);
   const [closePopover, setClosePopover] = React.useState<boolean>(false);
 
-  console.log(tasks);
-
   useEffect(() => {
     let todoItems = localStorage.getItem("MyTodos");
 
@@ -50,6 +48,12 @@ const ToDoList = () => {
     }
   };
 
+  const delTask = (id: string) => {
+    const filteredTasks = tasks.filter((task) => task.id !== id);
+    setTasks(filteredTasks);
+    localStorage.setItem("MyTodos", JSON.stringify(filteredTasks));
+  };
+
   return (
     <div className="flex flex-col p-6">
       <h1 className="font-bold text-xl pb-5">Your Task List</h1>
@@ -67,7 +71,7 @@ const ToDoList = () => {
           setClosePopover={setClosePopover}
         />
       </div>
-      <TaskTable tasks={tasks} />
+      <TaskTable tasks={tasks} delTask={delTask} />
     </div>
   );
 };
