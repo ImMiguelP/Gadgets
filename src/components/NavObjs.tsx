@@ -14,7 +14,7 @@ import {
 export const navPages = [
   { name: "Dashboard", href: "/", icon: HomeIcon },
   { name: "Weather", href: "/weather", icon: CloudIcon },
-  { name: "Calendar", href: "/calendar", icon: CalendarIcon },
+  // { name: "Calendar", href: "/calendar", icon: CalendarIcon },
   { name: "List", href: "/list", icon: DocumentDuplicateIcon },
   { name: "Settings", href: "/settings", icon: Cog6ToothIcon },
 ];
