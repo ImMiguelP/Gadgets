@@ -11,7 +11,6 @@ const ToDoList = () => {
   const [priority, setPriority] = React.useState<null | string>(null);
   const [date, setDate] = React.useState<Date | null>(null);
   const [closePopover, setClosePopover] = React.useState<boolean>(false);
-
   const createId = uuidv4();
 
   useEffect(() => {
