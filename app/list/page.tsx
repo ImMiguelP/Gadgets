@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ToDoPopOver from "./components/ToDoPopOver";
 import { TodoType } from "../../types";
 import TaskTable from "./components/TaskTable";
+import { v4 as uuidv4 } from "uuid";
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState<TodoType[]>([]);
@@ -10,6 +11,8 @@ const ToDoList = () => {
   const [priority, setPriority] = React.useState<null | string>(null);
   const [date, setDate] = React.useState<Date | null>(null);
   const [closePopover, setClosePopover] = React.useState<boolean>(false);
+
+  const createId = uuidv4();
 
   useEffect(() => {
     let todoItems = localStorage.getItem("MyTodos");
@@ -27,7 +30,7 @@ const ToDoList = () => {
   const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     addTask({
-      id: "",
+      id: createId,
       text: text,
       priority: priority as string,
       date: date as Date,

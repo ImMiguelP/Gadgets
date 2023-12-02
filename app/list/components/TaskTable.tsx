@@ -35,9 +35,11 @@ import {
 import { TodoType } from "../../../types";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 interface TaskTableProps {
   tasks: TodoType[];
+  delTask: (id: string) => void;
 }
 
 const BadgeOption = ({ priority }: { priority: string }) => {
@@ -51,83 +53,7 @@ const BadgeOption = ({ priority }: { priority: string }) => {
   return <Badge className={`bg-${color}-600 rounded-xl`}>{priority}</Badge>;
 };
 
-export const columns: ColumnDef<TodoType>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "text",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Tasks
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => <div className="capitalize">{row.getValue("text")}</div>,
-  },
-  {
-    accessorKey: "priority",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Priority
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => <BadgeOption priority={row.getValue("priority")} />,
-  },
-  {
-    accessorKey: "date",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Deadline
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => (
-      <div className="capitalize">
-        {row.getValue("date")
-          ? format(new Date(row.getValue("date")), "MMM d, yyyy")
-          : "Invalid Date"}
-      </div>
-    ),
-  },
-];
-
-const TaskTable = ({ tasks }: TaskTableProps) => {
+const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -137,6 +63,100 @@ const TaskTable = ({ tasks }: TaskTableProps) => {
   const [rowSelection, setRowSelection] = React.useState<{
     [key: string]: any;
   }>({});
+
+  const columns: ColumnDef<TodoType>[] = [
+    {
+      id: "select",
+      header: ({ table }) => (
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+        />
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      accessorKey: "text",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Tasks
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        );
+      },
+      cell: ({ row }) => (
+        <div className="capitalize">{row.getValue("text")}</div>
+      ),
+    },
+    {
+      accessorKey: "priority",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Priority
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        );
+      },
+      cell: ({ row }) => <BadgeOption priority={row.getValue("priority")} />,
+    },
+    {
+      accessorKey: "date",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Deadline
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        );
+      },
+      cell: ({ row }) => (
+        <div className="capitalize">
+          {row.getValue("date")
+            ? format(new Date(row.getValue("date")), "MMM d, yyyy")
+            : "Invalid Date"}
+        </div>
+      ),
+    },
+    {
+      id: "delete",
+      header: () => null,
+      cell: ({ row }) => (
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label="Delete row"
+          onClick={() => delTask(row.original.id)}
+        >
+          <TrashIcon className="h-5 w-5 text-red-500" />
+        </Button>
+      ),
+      enableSorting: false,
+      enableHiding: false,
+    },
+  ];
 
   const table = useReactTable({
     data: tasks,
@@ -245,6 +265,7 @@ const TaskTable = ({ tasks }: TaskTableProps) => {
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
+
         <div className="space-x-2">
           <Button
             variant="outline"
