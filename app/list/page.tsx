@@ -73,7 +73,7 @@ const ToDoList = () => {
           setClosePopover={setClosePopover}
         />
       </div>
-      <TaskTable tasks={tasks} delTask={delTask} />
+      <TaskTable tasks={tasks} setTasks={setTasks} delTask={delTask} />
     </div>
   );
 };

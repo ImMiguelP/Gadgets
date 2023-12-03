@@ -39,6 +39,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 
 interface TaskTableProps {
   tasks: TodoType[];
+  setTasks: React.Dispatch<React.SetStateAction<TodoType[]>>;
   delTask: (id: string) => void;
 }
 
@@ -53,7 +54,7 @@ const BadgeOption = ({ priority }: { priority: string }) => {
   return <Badge className={`bg-${color}-600 rounded-xl`}>{priority}</Badge>;
 };
 
-const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
+const TaskTable = ({ tasks, setTasks, delTask }: TaskTableProps) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -63,6 +64,19 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
   const [rowSelection, setRowSelection] = React.useState<{
     [key: string]: any;
   }>({});
+
+  const handleDeleteSelectedRows = () => {
+    const selectedRows = table.getFilteredSelectedRowModel().rows;
+
+    // Extract IDs from selected rows
+    const selectedIds = selectedRows.map((row) => row.original.id);
+
+    // Delete all selected rows
+    const updatedTasks = tasks.filter((task) => !selectedIds.includes(task.id));
+
+    setTasks(updatedTasks);
+    localStorage.setItem("MyTodos", JSON.stringify(updatedTasks));
+  };
 
   // Columns for tasks
   const columns: ColumnDef<TodoType>[] = [
@@ -263,7 +277,10 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <TrashIcon className="h-5 w-5 text-red-500" />
+        <TrashIcon
+          className="h-5 w-5 text-red-500"
+          onClick={() => handleDeleteSelectedRows()}
+        />
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
