@@ -64,6 +64,7 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
     [key: string]: any;
   }>({});
 
+  // Columns for tasks
   const columns: ColumnDef<TodoType>[] = [
     {
       id: "select",
@@ -158,6 +159,7 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
     },
   ];
 
+  // React Table
   const table = useReactTable({
     data: tasks,
     columns,
@@ -176,7 +178,7 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
       rowSelection,
     },
   });
-
+  // Render table headers
   const renderTableHeaders = () => {
     return table.getHeaderGroups().map((headerGroup) => (
       <TableRow key={headerGroup.id}>
@@ -190,7 +192,7 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
       </TableRow>
     ));
   };
-
+  // Render table
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
@@ -261,6 +263,7 @@ const TaskTable = ({ tasks, delTask }: TaskTableProps) => {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
+        <TrashIcon className="h-5 w-5 text-red-500" />
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
