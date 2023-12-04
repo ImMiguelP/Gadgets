@@ -50,6 +50,17 @@ const ToDoList = () => {
     }
   };
 
+  const editTask = (id: string, value: string) => {
+    const selectedTask = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, text: value };
+      }
+      return task;
+    });
+    console.log(selectedTask);
+    localStorage.setItem("MyTodos", JSON.stringify(selectedTask));
+  };
+
   const delTask = (id: string) => {
     const filteredTasks = tasks.filter((task) => task.id !== id);
     setTasks(filteredTasks);
@@ -73,7 +84,12 @@ const ToDoList = () => {
           setClosePopover={setClosePopover}
         />
       </div>
-      <TaskTable tasks={tasks} setTasks={setTasks} delTask={delTask} />
+      <TaskTable
+        tasks={tasks}
+        setTasks={setTasks}
+        delTask={delTask}
+        editTask={editTask}
+      />
     </div>
   );
 };
