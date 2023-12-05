@@ -54,7 +54,7 @@ const BadgeOption = ({ priority }: { priority: string }) => {
   return <Badge className={`bg-${color}-600 rounded-xl`}>{priority}</Badge>;
 };
 
-const TaskTable = ({ tasks, setTasks, delTask }: TaskTableProps) => {
+const TaskTable = ({ tasks, setTasks, delTask, editTask }: TaskTableProps) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -76,6 +76,32 @@ const TaskTable = ({ tasks, setTasks, delTask }: TaskTableProps) => {
 
     setTasks(updatedTasks);
     localStorage.setItem("MyTodos", JSON.stringify(updatedTasks));
+  };
+
+  const EditableCell = ({ row, updateTask }) => {
+    const [editableText, setEditableText] = React.useState(row.original.text);
+
+    const handleInputChange = (e) => {
+      setEditableText(e.target.value);
+    };
+
+    const handleInputBlur = () => {
+      updateTask(row.original.id, editableText);
+    };
+
+    return (
+      <div className="flex items-center">
+        <div className="relative">
+          <input
+            type="text"
+            value={editableText}
+            onChange={handleInputChange}
+            onBlur={handleInputBlur}
+            className="capitalize focus:border-b-2 focus:border-primary transition-colors focus:outline-none  bg-inherit"
+          />
+        </div>
+      </div>
+    );
   };
 
   // Columns for tasks
@@ -115,9 +141,7 @@ const TaskTable = ({ tasks, setTasks, delTask }: TaskTableProps) => {
           </Button>
         );
       },
-      cell: ({ row }) => (
-        <div className="capitalize">{row.getValue("text")}</div>
-      ),
+      cell: ({ row }) => <EditableCell row={row} updateTask={editTask} />,
     },
     {
       accessorKey: "priority",
