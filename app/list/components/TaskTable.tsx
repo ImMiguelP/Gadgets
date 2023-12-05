@@ -40,6 +40,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 interface TaskTableProps {
   tasks: TodoType[];
   setTasks: React.Dispatch<React.SetStateAction<TodoType[]>>;
+  editTask: (id: string, value: string) => void;
   delTask: (id: string) => void;
 }
 
@@ -78,10 +79,16 @@ const TaskTable = ({ tasks, setTasks, delTask, editTask }: TaskTableProps) => {
     localStorage.setItem("MyTodos", JSON.stringify(updatedTasks));
   };
 
-  const EditableCell = ({ row, updateTask }) => {
+  const EditableCell = ({
+    row,
+    updateTask,
+  }: {
+    row: any;
+    updateTask: (id: string, value: string) => void;
+  }) => {
     const [editableText, setEditableText] = React.useState(row.original.text);
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setEditableText(e.target.value);
     };
 
