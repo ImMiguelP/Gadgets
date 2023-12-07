@@ -51,8 +51,15 @@ const BadgeOption = ({ priority }: { priority: string }) => {
     Low: "green",
   };
 
-  const color = priorityColors[priority];
-  return <Badge className={`bg-${color}-600 rounded-xl`}>{priority}</Badge>;
+  const color = priorityColors[priority].toString();
+
+  return (
+    <Badge
+      className={`bg-${color}-600 rounded-xl hover:bg-${color}-200 hover:cursor-pointer`}
+    >
+      {priority}
+    </Badge>
+  );
 };
 
 const TaskTable = ({ tasks, setTasks, delTask, editTask }: TaskTableProps) => {
@@ -98,15 +105,13 @@ const TaskTable = ({ tasks, setTasks, delTask, editTask }: TaskTableProps) => {
 
     return (
       <div className="flex items-center">
-        <div className="relative">
-          <input
-            type="text"
-            value={editableText}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-            className="capitalize focus:border-b-2 focus:border-primary transition-colors focus:outline-none  bg-inherit"
-          />
-        </div>
+        <input
+          type="text"
+          value={editableText}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
+          className="capitalize focus:border-b-2 focus:border-primary transition-colors focus:outline-none  bg-inherit"
+        />
       </div>
     );
   };
