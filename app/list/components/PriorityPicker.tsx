@@ -25,7 +25,7 @@ const PriorityPicker = ({ priority, setPriority }: PriorityPickerProps) => {
       Low: "green",
     };
 
-    const color = priorityColors[priority];
+    let color = priorityColors[priority];
 
     return (
       <Badge
