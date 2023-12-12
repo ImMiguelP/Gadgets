@@ -1,32 +1,7 @@
+import { navPages } from "@/components/NavObjs";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
-import {
-  BookmarkSquareIcon,
-  BookOpenIcon,
-  QueueListIcon,
-  RssIcon,
-} from "@heroicons/react/24/solid";
 import { MdWidgets } from "react-icons/md";
 
-const links = [
-  {
-    name: "Documentation",
-    href: "#",
-    description: "Learn how to integrate our tools with your app.",
-    icon: BookOpenIcon,
-  },
-  {
-    name: "API Reference",
-    href: "#",
-    description: "A complete API reference for our libraries.",
-    icon: QueueListIcon,
-  },
-  {
-    name: "Guides",
-    href: "#",
-    description: "Installation guides that cover popular setups.",
-    icon: BookmarkSquareIcon,
-  },
-];
 export default function Example() {
   return (
     <div className="bg-secondary text-white h-[100dvh] lg:h-0 ">
@@ -48,7 +23,7 @@ export default function Example() {
             role="list"
             className="-mt-6 divide-y divide-gray-900/5 border-b border-gray-900/5"
           >
-            {links.map((link, linkIdx) => (
+            {navPages.slice(0, navPages.length - 1).map((link, linkIdx) => (
               <li key={linkIdx} className="relative flex gap-x-6 py-6">
                 <div className="flex h-10 w-10 flex-none items-center justify-center rounded-lg shadow-sm ring-1 ring-gray-900/10">
                   <link.icon
