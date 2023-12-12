@@ -1,15 +1,15 @@
 "use client";
 
-import { Button } from "../../../src/components/ui/button";
-import { Input } from "../../../src/components/ui/input";
+import { Button } from "../../../components/ui/button";
+import { Input } from "../../../components/ui/input";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../../src/components/ui/popover";
-import { Label } from "../../../src/components/ui/label";
+} from "../../../components/ui/popover";
+import { Label } from "../../../components/ui/label";
 import DatePicker from "./DatePicker";
 import PriorityPicker from "./PriorityPicker";
 import { TaskPopover } from "../../../types";

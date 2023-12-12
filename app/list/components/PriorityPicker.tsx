@@ -3,10 +3,10 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../../src/components/ui/popover";
-import { Button } from "../../../src/components/ui/button";
+} from "../../../components/ui/popover";
+import { Button } from "../../../components/ui/button";
 import { RxBadge } from "react-icons/rx";
-import { Badge } from "../../../src/components/ui/badge";
+import { Badge } from "../../../components/ui/badge";
 
 type PriorityPickerProps = {
   priority: string | null;

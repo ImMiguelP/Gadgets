@@ -3,10 +3,10 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../../src/components/ui/popover";
-import { Button } from "../../../src/components/ui/button";
+} from "../../../components/ui/popover";
+import { Button } from "../../../components/ui/button";
 import { CalendarIcon } from "@heroicons/react/24/solid";
-import { Calendar } from "../../../src/components/ui/calendar";
+import { Calendar } from "../../../components/ui/calendar";
 import { format } from "date-fns";
 
 type DatePickerProps = {
