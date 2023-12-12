@@ -36,6 +36,7 @@ import { TodoType } from "../../../types";
 import { Badge } from "../../../components/ui/badge";
 import { format } from "date-fns";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { cn } from "@/lib/utils";
 
 interface TaskTableProps {
   tasks: TodoType[];
@@ -55,7 +56,11 @@ const BadgeOption = ({ priority }: { priority: string }) => {
 
   return (
     <Badge
-      className={`bg-${color}-600 rounded-xl hover:bg-${color}-200 hover:cursor-pointer`}
+      className={cn(`rounded-xl hover:cursor-pointer`, {
+        "bg-red-500 hover:bg-red-200": color === "red",
+        "bg-yellow-500 hover:bg-yellow-200": color === "yellow",
+        "bg-green-500 hover:bg-green-200": color === "green",
+      })}
     >
       {priority}
     </Badge>
