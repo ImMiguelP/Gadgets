@@ -24,22 +24,25 @@ export default function Example() {
             className="-mt-6 divide-y divide-gray-900/5 border-b border-gray-900/5"
           >
             {navPages.slice(0, navPages.length - 1).map((link, linkIdx) => (
-              <div key={linkIdx} className="relative flex gap-x-6 py-6 ">
-                <div className="flex h-10 w-10 flex-none items-center justify-center ">
+              <div
+                key={linkIdx}
+                className="group relative flex gap-x-6 py-6 text-secondary-foreground/60 hover:text-primary"
+              >
+                <div className="flex h-10 w-10 flex-none items-center justify-center text-primary/60 group-hover:text-primary ">
                   <link.icon className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <div className="flex-auto">
-                  <h3 className="text-sm font-semibold leading-6 text-primary">
+                  <h3 className="text-sm font-semibold leading-6 ">
                     <a href={link.href}>
                       <span className="absolute inset-0" aria-hidden="true" />
                       {link.name}
                     </a>
                   </h3>
-                  <p className="mt-2 text-sm leading-6">{link.description}</p>
+                  <p className="mt-2 text-sm leading-6 ">{link.description}</p>
                 </div>
-                <div className="flex-none self-center">
+                <div className="flex-none self-center ">
                   <ChevronRightIcon
-                    className="h-5 w-5 text-gray-400"
+                    className="h-5 w-5 text-primary/40 group-hover:text-primary"
                     aria-hidden="true"
                   />
                 </div>
