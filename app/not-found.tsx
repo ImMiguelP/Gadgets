@@ -24,21 +24,18 @@ export default function Example() {
             className="-mt-6 divide-y divide-gray-900/5 border-b border-gray-900/5"
           >
             {navPages.slice(0, navPages.length - 1).map((link, linkIdx) => (
-              <li key={linkIdx} className="relative flex gap-x-6 py-6">
-                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-lg shadow-sm ring-1 ring-gray-900/10">
-                  <link.icon
-                    className="h-6 w-6 text-primary"
-                    aria-hidden="true"
-                  />
+              <div key={linkIdx} className="relative flex gap-x-6 py-6 ">
+                <div className="flex h-10 w-10 flex-none items-center justify-center ">
+                  <link.icon className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <div className="flex-auto">
-                  <h3 className="text-sm font-semibold leading-6 ">
+                  <h3 className="text-sm font-semibold leading-6 text-primary">
                     <a href={link.href}>
                       <span className="absolute inset-0" aria-hidden="true" />
                       {link.name}
                     </a>
                   </h3>
-                  <p className="mt-2 text-sm leading-6 ">{link.description}</p>
+                  <p className="mt-2 text-sm leading-6">{link.description}</p>
                 </div>
                 <div className="flex-none self-center">
                   <ChevronRightIcon
@@ -46,7 +43,7 @@ export default function Example() {
                     aria-hidden="true"
                   />
                 </div>
-              </li>
+              </div>
             ))}
           </ul>
           <div className="mt-10 flex justify-center">
